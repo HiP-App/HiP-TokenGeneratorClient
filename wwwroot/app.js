@@ -67,7 +67,6 @@ function showTokens() {
     mgr.getUser().then(function (user) {
         if (user) {
             display("#id-token", user || "");
-            //display("#access-token", user.access_token && { access_token: user.access_token, expires_in: user.expires_in } || "");
         }
         else {
             display("#response", { message: "Not logged in" });
@@ -155,6 +154,4 @@ if (window.location.hash) {
     });
 });
 
-document.querySelector(".call").addEventListener("click", callApi, false);
-document.querySelector(".revoke").addEventListener("click", revoke, false);
 document.querySelector(".logout").addEventListener("click", logout, false);
