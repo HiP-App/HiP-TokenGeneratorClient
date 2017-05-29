@@ -1,14 +1,11 @@
 ﻿/// <reference path="libs/oidc-client.js" />
 
 var config = {
-    authority: window.location.protocol + "//" + window.location.hostname + ":5001/",
+    // token generator is only used for development purposes, so hardcoding "/develop" is fine
+    authority: window.location.protocol + "//" + window.location.hostname + "/develop/authv2/",
     client_id: "HiP-TokenGenerator",
-    redirect_uri: window.location.protocol + "//" + window.location.host + "/callback.html",
-    post_logout_redirect_uri: window.location.protocol + "//" + window.location.host + "/index.html",
-
-    // if we choose to use popup window instead for logins
-    popup_redirect_uri: window.location.protocol + "//" + window.location.host + "/popup.html",
-    popupWindowFeatures: "menubar=yes,location=yes,toolbar=yes,width=1200,height=800,left=100,top=100;resizable=yes",
+    redirect_uri: window.location.protocol + "//" + window.location.host + "/develop/tokengenerator/callback.html",
+    post_logout_redirect_uri: window.location.protocol + "//" + window.location.host + "/develop/tokengenerator/index.html",
 
     // these two will be done dynamically from the buttons clicked, but are
     // needed if you want to use the silent_renew
@@ -17,11 +14,6 @@ var config = {
 
     // this will toggle if profile endpoint is used
     loadUserInfo: true,
-
-    // silent renew will get a new access_token via an iframe
-    // just prior to the old access_token expiring (60 seconds prior)
-    silent_redirect_uri: window.location.protocol + "//" + window.location.host + "/silent.html",
-    automaticSilentRenew: true,
 
     // will revoke (reference) access tokens at logout time
     revokeAccessTokenOnSignout: true,
